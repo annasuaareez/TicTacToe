@@ -1,0 +1,32 @@
+*{
+    padding: 0;
+    margin: 0;
+    background-color: mintcream;
+}
+@font-face{
+    font-family: 'futura';
+    src: url('Futura\ Std\ Book.otf');
+}
+p{
+    padding: 5% 0% 0% 30%;
+    font-size: 50px;
+    font-weight: 400;
+    font-family: 'futura', sans-serif;
+}
+#tablero{
+    padding-top: 5%;
+}
+
+.fila{
+    display:flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+}
+
+.casilla{
+    width: 200px;
+    height: 200px;
+    border: 1px solid black;
+    font-size: 100px;
+}
