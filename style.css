@@ -1,32 +1,55 @@
+
+@font-face {
+    font-family: 'Formula';
+    src: url('Formula1-Regular.ttf');
+}
 *{
     padding: 0;
     margin: 0;
-    background-color: mintcream;
 }
-@font-face{
-    font-family: 'futura';
-    src: url('Futura\ Std\ Book.otf');
+
+body{
+    background-color: #ffefcd;
+}
+
+header{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 40px;
 }
 p{
-    padding: 5% 0% 0% 30%;
     font-size: 50px;
     font-weight: 400;
-    font-family: 'futura', sans-serif;
+    font-family: 'Formula', sans-serif;
 }
+
 #tablero{
-    padding-top: 5%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin: 15px;
 }
 
 .fila{
     display:flex;
     flex-wrap: wrap;
-    align-items: center;
-    justify-content: center;
 }
 
 .casilla{
-    width: 200px;
-    height: 200px;
-    border: 1px solid black;
-    font-size: 100px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 160px;
+    height: 160px;
+    margin: 10px;
+    background-color: #eff2f9;
+    box-shadow: #b5bfc6 0px 2px 4px, #b5bfc6 0px 7px 13px -3px, #b5bfc6 0px -3px 0px inset;
+    border-radius: 3%;
+    font-family: 'Formula', sans-serif;
+    font-size: 50px;
+}
+.casilla:hover{
+    background-color: #e4ebf1;
 }
