@@ -14,14 +14,20 @@ body{
 
 header{
     display: flex;
+    flex-direction: column;
     align-items: center;
-    justify-content: center;
     padding: 40px;
+    margin-left: 140px;
+    font-family: 'Formula', sans-serif;
 }
 p{
     font-size: 50px;
     font-weight: 400;
-    font-family: 'Formula', sans-serif;
+}
+.info p{
+    margin-top: 15px;
+    font-size: 20px;
+    font-weight: 400;
 }
 
 .container{
@@ -32,7 +38,7 @@ p{
 }
 
 #puntuacion{
-    display: flex;
+    display: block;
     flex-direction: column;
     justify-content: left;
 }
@@ -58,7 +64,7 @@ p{
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    margin: 15px;
+    margin: 10px;
 }
 .fila{
     display:flex;
@@ -90,15 +96,11 @@ p{
   text-decoration: none;
   text-transform: uppercase;
   color: #000;
-  cursor: pointer;
   border: 3px solid;
   margin-top: 25px;
   padding: 0.25em 0.5em;
   box-shadow: 1px 1px 0px 0px, 2px 2px 0px 0px, 3px 3px 0px 0px, 4px 4px 0px 0px, 5px 5px 0px 0px;
   position: relative;
-  user-select: none;
-  -webkit-user-select: none;
-  touch-action: manipulation;
 }
 #boton:active {
   box-shadow: 0px 0px 0px 0px;
@@ -109,4 +111,35 @@ p{
   #boton {
     padding: 0.25em 0.75em;
   }
+}
+
+.tiempo{
+    display: block;
+    flex-direction: column;
+    margin-top: 45px;
+    font-family: "Formula", sans-serif;
+}
+#count-down{
+    position: relative;
+    margin: auto;
+    margin-top: 25px;
+    height: 60px;
+    width: 60px;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+}
+.circulo {
+    width: 70px;
+    height: 70px;
+    -moz-border-radius: 50%;
+    -webkit-border-radius: 50%;
+    border-radius: 50%;
+    border:3px solid #a58e74;
+}
+#segundos{
+    color: black;
+    display: inline-block;
+    font-size: 25px;
+    margin-top: 17PX;
 }
