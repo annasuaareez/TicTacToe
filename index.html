@@ -12,23 +12,36 @@
         <p>Tic Tac Toe</p>
     </header>
     <div class="container">
-        <div id="tablero">
-            <div class="fila">
-                <div class="casilla"></div>
-                <div class="casilla"></div>
-                <div class="casilla"></div>
-            </div>
-            <div class="fila">
-                <div class="casilla"></div>
-                <div class="casilla"></div>
-                <div class="casilla"></div>
-            </div>
-            <div class="fila">
-                <div class="casilla"></div>
-                <div class="casilla"></div>
-                <div class="casilla"></div>
-            </div>
+        <div id="puntuacion">
+            <p>Puntuación</p>
+            <div class="puntuacion-jugador">Jugador X: <span id="jugador1">0</span></span></div>
+            <div class="puntuacion-jugador">Jugador O: <span id="jugador2">0</span></span></div>
         </div>
+
+        <div class="juego">
+            <div id="tablero">
+                <div class="fila">
+                    <div class="casilla" ></div>
+                    <div class="casilla"></div>
+                    <div class="casilla"></div>
+                </div>
+                <div class="fila">
+                    <div class="casilla"></div>
+                    <div class="casilla"></div>
+                    <div class="casilla"></div>
+                </div>
+                <div class="fila">
+                    <div class="casilla"></div>
+                    <div class="casilla"></div>
+                    <div class="casilla"></div>
+                </div>
+            </div>
+    
+            <div id="mensaje"></div>
+
+            <button type="reset" id="boton">Juega de nuevo</button>
+        </div>
+
     </div>
     
 </body>

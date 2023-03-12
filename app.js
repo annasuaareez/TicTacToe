@@ -1,10 +1,14 @@
 //Inicializamos el turno de cada jugador
-let turno = true;
-
 let tablero = document.getElementsByClassName("casilla")
+let boton = document.getElementById('boton')
+
+let turno = true;
 
 let posicionX = []
 let posicionO = []
+
+let contadorX = 0
+let contadorO = 0
 
 let combinacionGanadora = [
     [3, 4, 5],
@@ -15,10 +19,6 @@ let combinacionGanadora = [
     [2, 4, 6]
 ];
 
-for (let i = 0; i < tablero.length; i ++){
-    tablero[i].setAttribute('onclick', `pintarCasilla(${i})`)
-}
-
 function pintarCasilla(i){
     if (turno){
         tablero[i].textContent = 'X'
@@ -26,8 +26,7 @@ function pintarCasilla(i){
         posicionX.sort()
         if (posicionX.length >= 3){
             comprobarGanador(posicionX)
-        } 
-        //comprobarGanador(posicionX)
+        }
     }else{
         tablero[i].textContent = 'O'
         posicionO.push(i)
@@ -41,6 +40,10 @@ function pintarCasilla(i){
     turno = !turno
 }
 
+for (let i = 0; i < tablero.length; i ++){
+    tablero[i].setAttribute('onclick', `pintarCasilla(${i})`)
+}
+
 function comprobarGanador(posicion){
     for(let i  = 0; i < combinacionGanadora.length; i++){
         let contador = 0
@@ -51,13 +54,21 @@ function comprobarGanador(posicion){
         }
         if(contador == 3){
             if (turno){
-                detenerJuego()
-                alert('ha ganado X')
-                //crear una funcion que alerte quien ha ganado con la opcion de volver a jugar
+                document.getElementById('mensaje').classList.add('visible')
+                document.getElementById('mensaje').innerHTML = 'JUGADOR X HAS GANADO'
+                for (let i = 0; i < tablero.length; i ++){
+                    tablero[i].removeAttribute('onclick')
+                }
+                contadorX++
+                añadirPuntuacion()
             }else if (!turno){
-                alert('ha ganado O')
-            }else{
-                alert('has empatado')
+                for (let i = 0; i < tablero.length; i ++){
+                    document.getElementById('mensaje').classList.add('visible')
+                    document.getElementById('mensaje').innerHTML = 'JUGADOR O HAS GANADO'
+                    tablero[i].removeAttribute('onclick')
+                }
+                contadorO++
+                añadirPuntuacion()
             }
 
             for (let k = 0; k < combinacionGanadora[i].length; k++){
@@ -67,6 +78,30 @@ function comprobarGanador(posicion){
     }
 }
 
-function detenerJuego(){
+function volverAJugar(){
+    for (let i = 0; i < tablero.length; i++) {
+        document.getElementById('mensaje').innerHTML = ''
+        tablero[i].innerText = ""
+        tablero[i].style.backgroundColor = '#eff2f9'
+    }
+
+    posicionX = []
+    posicionO = []
+    turno = true
+
+    for (let i = 0; i < tablero.length; i ++){
+        tablero[i].setAttribute('onclick', `pintarCasilla(${i})`)
+    }
 
 }
+
+function añadirPuntuacion(){
+    let contadorJugador1 = document.getElementById('jugador1')
+    let contadorJugador2 = document.getElementById('jugador2')
+
+    contadorJugador1.textContent = contadorX
+    contadorJugador2.textContent = contadorO
+}
+
+boton.addEventListener('click', volverAJugar)
+

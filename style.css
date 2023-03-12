@@ -24,6 +24,35 @@ p{
     font-family: 'Formula', sans-serif;
 }
 
+.container{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+}
+
+#puntuacion{
+    display: flex;
+    flex-direction: column;
+    justify-content: left;
+}
+#puntuacion p{
+    font-size: 50px;
+    font-family: 'Formula', sans-serif;
+}
+.puntuacion-jugador{
+    font-family: 'Formula', sans-serif;
+    font-size: 25px;
+}
+
+.juego{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-left: 90px;
+    margin-right: 90px;
+}
 #tablero{
     display: flex;
     flex-direction: column;
@@ -31,12 +60,10 @@ p{
     justify-content: center;
     margin: 15px;
 }
-
 .fila{
     display:flex;
     flex-wrap: wrap;
 }
-
 .casilla{
     display: flex;
     justify-content: center;
@@ -48,8 +75,38 @@ p{
     box-shadow: #b5bfc6 0px 2px 4px, #b5bfc6 0px 7px 13px -3px, #b5bfc6 0px -3px 0px inset;
     border-radius: 3%;
     font-family: 'Formula', sans-serif;
-    font-size: 50px;
+    font-size: 80px;
 }
-.casilla:hover{
-    background-color: #e4ebf1;
+
+#mensaje{
+    font-family: "Formula", sans-serif;
+    font-size: 16px; 
+}
+
+#boton {
+  font-family: "Formula", sans-serif;
+  font-size: 16px;
+  letter-spacing: 2px;
+  text-decoration: none;
+  text-transform: uppercase;
+  color: #000;
+  cursor: pointer;
+  border: 3px solid;
+  margin-top: 25px;
+  padding: 0.25em 0.5em;
+  box-shadow: 1px 1px 0px 0px, 2px 2px 0px 0px, 3px 3px 0px 0px, 4px 4px 0px 0px, 5px 5px 0px 0px;
+  position: relative;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+}
+#boton:active {
+  box-shadow: 0px 0px 0px 0px;
+  top: 5px;
+  left: 5px;
+}
+@media (min-width: 768px) {
+  #boton {
+    padding: 0.25em 0.75em;
+  }
 }
