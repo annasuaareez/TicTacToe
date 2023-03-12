@@ -1,6 +1,7 @@
 //Inicializamos el turno de cada jugador
 let tablero = document.getElementsByClassName('casilla')
 let boton = document.getElementById('boton')
+document.getElementById('turnoJugador').innerHTML = 'Jugador X'
 
 let turno = true;
 
@@ -52,6 +53,7 @@ function pintarCasilla(i){
         tablero[i].textContent = 'O'
         posicionO.push(i)
         posicionO.sort()
+
         if (posicionO.length >= 3){
             comprobarGanador(posicionO)
         } 
@@ -63,7 +65,6 @@ function pintarCasilla(i){
 
 /*añadimos el evento de onclick el cual al pulsar y soltar se pinta la casilla seleccionada*/
 for (let i = 0; i < tablero.length; i ++){
-    document.getElementById('turnoJugador').innerHTML = 'Jugador X'
     tablero[i].setAttribute('onclick', `pintarCasilla(${i})`)
 }
 
@@ -157,7 +158,7 @@ function añadirPuntuacion(){
 segundos.textContent = tiempo
 
 /*
-El tiempo empieza en 30 segundos y retrodece 1 segundo hasta llegar al -1, en donde se vuelve a iniciar el temporizador a 30
+El tiempo empieza en 15 segundos y retrodece 1 segundo hasta llegar al -1 (para imprimir el 0), en donde se vuelve a iniciar el temporizador a 30
 */
 function cuentaAtras(){
     tiempo = --tiempo <= -1 ? 15 : tiempo
@@ -169,12 +170,12 @@ function cuentaAtras(){
     if (tiempo == 0){
         document.getElementById('mensaje').innerHTML = 'HAS PERDIDO EL TURNO'
         
-        turno = !turno 
+        turno = !turno
 
-        if (document.getElementById('turnoJugador').innerHTML = 'Jugador X'){
+        if (!turno){
             document.getElementById('turnoJugador').classList.add('visible')
             document.getElementById('turnoJugador').innerHTML = 'Jugador O'
-        }else if (document.getElementById('turnoJugador').innerHTML = 'Jugador O'){
+        }else if(turno){
             document.getElementById('turnoJugador').classList.add('visible')
             document.getElementById('turnoJugador').innerHTML = 'Jugador X'
         }
