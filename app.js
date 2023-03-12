@@ -1,7 +1,6 @@
 //Inicializamos el turno de cada jugador
 let tablero = document.getElementsByClassName('casilla')
 let boton = document.getElementById('boton')
-document.getElementById('turnoJugador').innerHTML = 'Jugador X'
 
 let turno = true;
 
@@ -29,20 +28,26 @@ Analizamos que si en una fila los 3 huecos estan pintados son del mismo jugador
 Y pasamos a la funcion de comprobar ganador
 */
 function pintarCasilla(i){
-    pintarTurno()
     if (turno){
         tiempo = 15
         segundos.textContent = tiempo
 
+        document.getElementById('turnoJugador').classList.add('visible')
+        document.getElementById('turnoJugador').innerHTML = 'Jugador O'
+
         tablero[i].textContent = 'X'
         posicionX.push(i)
         posicionX.sort()
+
         if (posicionX.length >= 3){
             comprobarGanador(posicionX)
         }
     }else{
         tiempo = 15
         segundos.textContent = tiempo
+
+        document.getElementById('turnoJugador').classList.add('visible')
+        document.getElementById('turnoJugador').innerHTML = 'Jugador X'
 
         tablero[i].textContent = 'O'
         posicionO.push(i)
@@ -58,17 +63,8 @@ function pintarCasilla(i){
 
 /*añadimos el evento de onclick el cual al pulsar y soltar se pinta la casilla seleccionada*/
 for (let i = 0; i < tablero.length; i ++){
+    document.getElementById('turnoJugador').innerHTML = 'Jugador X'
     tablero[i].setAttribute('onclick', `pintarCasilla(${i})`)
-}
-
-function pintarTurno(){
-    if (turno){
-        document.getElementById('turnoJugador').classList.add('visible')
-        document.getElementById('turnoJugador').innerHTML = 'Jugador X'
-    }else  if (!turno){
-        document.getElementById('turnoJugador').classList.add('visible')
-        document.getElementById('turnoJugador').innerHTML = 'Jugador O'
-    }
 }
 
 /*
@@ -172,11 +168,22 @@ function cuentaAtras(){
     //en el momento de que el tiempo llegue a 0 avisamos al jugador que le toca que ha perdido su turno
     if (tiempo == 0){
         document.getElementById('mensaje').innerHTML = 'HAS PERDIDO EL TURNO'
+        
         turno = !turno 
+
+        if (document.getElementById('turnoJugador').innerHTML = 'Jugador X'){
+            document.getElementById('turnoJugador').classList.add('visible')
+            document.getElementById('turnoJugador').innerHTML = 'Jugador O'
+        }else if (document.getElementById('turnoJugador').innerHTML = 'Jugador O'){
+            document.getElementById('turnoJugador').classList.add('visible')
+            document.getElementById('turnoJugador').innerHTML = 'Jugador X'
+        }
+
     }else{
         document.getElementById('mensaje').innerHTML = ''
     }
 }
 
 let temporizador = setInterval(cuentaAtras, 1000)
+
 
