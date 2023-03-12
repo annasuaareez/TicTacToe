@@ -1,6 +1,7 @@
 //Inicializamos el turno de cada jugador
-let tablero = document.getElementsByClassName("casilla")
+let tablero = document.getElementsByClassName('casilla')
 let boton = document.getElementById('boton')
+document.getElementById('turnoJugador').innerHTML = 'Jugador X'
 
 let turno = true;
 
@@ -10,7 +11,7 @@ let posicionO = []
 let contadorX = 0
 let contadorO = 0
 
-let tiempo = 30
+let tiempo = 15
 let segundos = document.getElementById('segundos')
 
 let combinacionGanadora = [
@@ -28,8 +29,9 @@ Analizamos que si en una fila los 3 huecos estan pintados son del mismo jugador
 Y pasamos a la funcion de comprobar ganador
 */
 function pintarCasilla(i){
+    pintarTurno()
     if (turno){
-        tiempo = 30
+        tiempo = 15
         segundos.textContent = tiempo
 
         tablero[i].textContent = 'X'
@@ -39,7 +41,7 @@ function pintarCasilla(i){
             comprobarGanador(posicionX)
         }
     }else{
-        tiempo = 30
+        tiempo = 15
         segundos.textContent = tiempo
 
         tablero[i].textContent = 'O'
@@ -57,6 +59,16 @@ function pintarCasilla(i){
 /*añadimos el evento de onclick el cual al pulsar y soltar se pinta la casilla seleccionada*/
 for (let i = 0; i < tablero.length; i ++){
     tablero[i].setAttribute('onclick', `pintarCasilla(${i})`)
+}
+
+function pintarTurno(){
+    if (turno){
+        document.getElementById('turnoJugador').classList.add('visible')
+        document.getElementById('turnoJugador').innerHTML = 'Jugador X'
+    }else  if (!turno){
+        document.getElementById('turnoJugador').classList.add('visible')
+        document.getElementById('turnoJugador').innerHTML = 'Jugador O'
+    }
 }
 
 /*
@@ -91,6 +103,9 @@ function comprobarGanador(posicion){
                 for (let i = 0; i < tablero.length; i ++){
                     tablero[i].removeAttribute('onclick')
                 }
+                clearInterval(temporizador)
+                contadorO++
+                añadirPuntuacion()
             }
 
             //La combinacion ganadora se pintara de verde
@@ -118,10 +133,11 @@ function volverAJugar(){
     posicionO = []
     turno = true
 
-    tiempo = 30
+    tiempo = 15
     segundos.textContent = tiempo
     temporizador = setInterval(cuentaAtras, 1000)
 
+    document.getElementById('turnoJugador').innerHTML = 'Jugador X'
     for (let i = 0; i < tablero.length; i ++){
         tablero[i].setAttribute('onclick', `pintarCasilla(${i})`)
     }
@@ -148,7 +164,7 @@ segundos.textContent = tiempo
 El tiempo empieza en 30 segundos y retrodece 1 segundo hasta llegar al -1, en donde se vuelve a iniciar el temporizador a 30
 */
 function cuentaAtras(){
-    tiempo = --tiempo <= -1 ? 30 : tiempo
+    tiempo = --tiempo <= -1 ? 15 : tiempo
 
     //Imprimimos el valor de los segundos que quedan
     segundos.textContent = tiempo

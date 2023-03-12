@@ -30,24 +30,31 @@ p{
     font-weight: 400;
 }
 
+
 .container{
     display: flex;
     flex-direction: row;
     align-items: center;
     justify-content: center;
 }
-
+.izquierda{
+    display: flex;
+    flex-direction: column;
+    font-family: 'Formula', sans-serif;
+}
+#turnoJugador{
+    font-size: 25px;
+}
 #puntuacion{
     display: block;
     flex-direction: column;
     justify-content: left;
+    margin-top: 15px;
 }
 #puntuacion p{
     font-size: 50px;
-    font-family: 'Formula', sans-serif;
 }
 .puntuacion-jugador{
-    font-family: 'Formula', sans-serif;
     font-size: 25px;
 }
 
